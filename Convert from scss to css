@@ -1,0 +1,5 @@
+Dev:
+sass --watch /path/to/scss:path/to/css
+
+Prod:
+sass /path/to/scss:path/to/css --style=compressed --sourcemap=none
