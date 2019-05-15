@@ -1,0 +1,12 @@
+Analytics
+
+1. Analytics.google.com -> Create new property (Admin / Add new property)
+2. Add analytics ID to template
+3. Rememeber to include script tag
+
+Tag manager:
+
+1. tagmanager.google.com
+2. Add new tag -> Analytics
+3. Add variable with analytics ID
+4. Publish variable
