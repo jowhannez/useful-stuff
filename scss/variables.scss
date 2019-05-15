@@ -1,0 +1,37 @@
+// Transitions
+$transition-duration       : 250ms;
+$transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+
+// Fonts
+$font-family: sans-serif !default;
+
+// Colors
+$color-contrast             : #00A8FF   !default;
+$color-contrast--transparent: #00A8FF30 !default;
+$color-contrast-lighter     : #29b4fa   !default;
+$color-contrast-lightest    : #60c7fa   !default;
+$color-accent               : hotpink   !default;
+$color-bg-light             : #cecece   !default;
+$color-bg-gray-light        : #c7c7c7   !default;
+$color-bg-gray-lighter      : #dbdbdb   !default;
+$color-bg-gray              : #707070   !default;
+$color-bg-dark              : #333333   !default;
+$main-bg-color              : white     !default;
+$body-bg-color              : white     !default;
+$font-color-contrast        : #DAE4E2   !default;
+
+// SVGs
+$icon-checkmark: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNi4xMDkiIGhlaWdodD0iMTQuMzA4Ij48cGF0aCBkYXRhLW5hbWU9IlBhdGggODYiIGQ9Ik0xNiAxLjk2NEwxMy44NTYuMDgzYS4zMy4zMyAwIDAgMC0uNDY2LjAzTDUuNjI3IDguOTQ5IDIuODY2IDUuMjk1YS4zMjkuMzI5IDAgMCAwLS4yMTgtLjEyOC4zMjYuMzI2IDAgMCAwLS4yNDQuMDY0TC4xMzEgNi45NDlhLjMzLjMzIDAgMCAwLS4wNjQuNDYybDUuMTExIDYuNzY1YS4zMy4zMyAwIDAgMCAuMjUxLjEzMWguMDEyYS4zMy4zMyAwIDAgMCAuMjQ4LS4xMTJMMTYuMDI3IDIuNDI5QS4zMy4zMyAwIDAgMCAxNiAxLjk2NHoiLz48L3N2Zz4=');
+$icon-x        : url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNC41NTciIGhlaWdodD0iMTQuNTU3Ij48ZyBkYXRhLW5hbWU9Ikdyb3VwIDI1NiIgZmlsbD0iIzI0MjQyNCI+PHBhdGggZGF0YS1uYW1lPSJSZWN0YW5nbGUgMjQyIiBkPSJNMCAxLjE4TDEuMTggMGwxMy4zNzcgMTMuMzc2LTEuMTggMS4xOHoiLz48cGF0aCBkYXRhLW5hbWU9IlJlY3RhbmdsZSAyNDMiIGQ9Ik0wIDEzLjM3N0wxMy4zNzYuMDAxbDEuMTggMS4xOEwxLjE4IDE0LjU1N3oiLz48L2c+PC9zdmc+');
+$svg-arrow-lin : url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNi40NzEiIGhlaWdodD0iMTMuNjgiPjxwYXRoIGRhdGEtbmFtZT0iUGF0aCAxMDAiIGQ9Ik0xNS41NDUgNS41NDhsLjAyNi4wMDZINC41NDlsMy40NjUtMy40NzNhLjkxLjkxIDAgMCAwIDAtMS4yODJMNy40NzUuMjYyYS45LjkgMCAwIDAtMS4yNzUgMEwuMjYzIDYuMTk5YS45MDguOTA4IDAgMCAwIDAgMS4yNzdMNi4yIDEzLjQxN2EuOS45IDAgMCAwIDEuMjczIDBsLjUzOS0uNTM5YS44OTIuODkyIDAgMCAwIC4yNjMtLjYzNi44NjUuODY1IDAgMCAwLS4yNjMtLjYyNEw0LjUxIDguMTI1aDExLjA0N2EuOTMzLjkzMyAwIDAgMCAuOTE0LS45MjR2LS43NjNhLjkxNS45MTUgMCAwIDAtLjkyNi0uODl6IiBmaWxsPSIjMWU0MDM4Ii8+PC9zdmc+');
+$svg-arrow     : url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMC4xMTMiIGhlaWdodD0iMTcuNjkxIj48cGF0aCBkYXRhLW5hbWU9IlBhdGggMjQ4IiBkPSJNLjM2MyA3Ljk3TDcuOTkyLjM2M2ExLjI0MSAxLjI0MSAwIDAgMSAxLjc1NyAxLjc1MmwtNi43NSA2LjczMSA2Ljc1IDYuNzMxYTEuMjQxIDEuMjQxIDAgMCAxLTEuNzU3IDEuNzUyTC4zNjMgOS43MjJhMS4yMzYgMS4yMzYgMCAwIDEgMC0xLjc1MnoiIGZpbGw9IiMxZTQwMzgiLz48L3N2Zz4=');
+
+// Hamburgers
+$hamburger-padding-x    : 8px;
+$hamburger-padding-y    : 14px;
+$hamburger-layer-width  : 32px;
+$hamburger-layer-height : 3px;
+$hamburger-layer-spacing: 5px;
+$hamburger-layer-color  : white;
+$hamburger-hover-opacity: 1;
+$hamburger-types        : (collapse);

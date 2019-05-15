@@ -1,0 +1,40 @@
+
+.grid {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+
+    &--nowrap{
+        flex-wrap: nowrap;
+    }
+
+    &--center-h{
+        justify-content: center;
+    }
+
+    &--center-v{
+        align-items: center;
+    }
+
+    /*
+     Width classes &__item--{screen}-{columns}
+     */
+    $screens: (small, ipad, desktop);
+    $columns-max: 12;
+    $columns-min: 1;
+    $columns-counter: $columns-max;
+
+    @while( $columns-counter >= $columns-min ) {
+        $column-width: $columns-max / $columns-counter;
+
+        @each $screen in $screens {
+            &__item--#{$screen}-#{$columns-counter} {
+                @include breakpoint($screen) {
+                    width: (100% / $column-width);
+                }
+            }
+        }
+
+        $columns-counter: ($columns-counter - 1);
+    }
+}

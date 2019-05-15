@@ -1,0 +1,143 @@
+$breakpoints: (
+		small    : 0px,
+		iphone-7 : 375px,
+		ipad     : 768px,
+		ipad-pro : 1024px,
+		desktop  : 1280px,
+		laptop   : 1440px,
+		hd       : 1920px
+) !default;
+
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base: null) {
+	@if type-of($value) != 'number' {
+		@warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+		@return $value;
+	}
+	@if unit($value) != 'rem' {
+		$value: strip-unit($value) / strip-unit($base) * 1rem;
+	}
+
+	@if $value == 0rem {
+		$value: 0;
+	}
+
+	@return $value;
+}
+
+@function rem-calc($values, $base: null) {
+	$rem-values: ();
+	$count: length($values);
+
+	@if $base == null {
+		$base: 16px;
+	}
+
+	@if unit($base) == '%' {
+		$base: ($base / 100%) * 16px;
+	}
+
+	@if unit($base) == 'rem' {
+		$base: strip-unit($base) * 16px;
+	}
+
+	@if $count == 1 {
+		@return convert-to-rem($values, $base);
+	}
+
+	@for $i from 1 through $count {
+		$rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base));
+	}
+
+	@return $rem-values;
+}
+
+@function convert-to-em($value) {
+	@if unit($value) == 'px' or unitless($value) {
+		$value: rem-calc($value, $base: 16px);
+	}
+	@return strip-unit($value) * 1em;
+}
+
+@function get-next-breakpoint($map, $key) {
+	$values: map-keys($map);
+	$i: 0;
+	@if (map-has-key($map, $key)) {
+		$i: index($values, $key) + 1;
+	}
+	@if ($i > length($map) or $i == 0) {
+		@return null;
+	} @else {
+		@return map-get($map, nth($values, $i));
+	}
+}
+
+@function get-breakpoint($val: small) {
+	$bp: nth($val, 1);
+	$bp-max: 0;
+	$dir: if(length($val) > 1, nth($val, 2), up);
+	$breakpoint: '';
+	$named: false;
+	@if $bp == 'landscape' or $bp == 'portrait' {
+		@return '(orientation: #{$bp})';
+	} @else if $bp == 'retina' {
+		@return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+	}
+	@if type-of($bp) == 'string' {
+		@if map-has-key($breakpoints, $bp) {
+			@if $dir == 'only' or $dir == 'down' {
+				$bp-max: get-next-breakpoint($breakpoints, $bp);
+			}
+			$bp: map-get($breakpoints, $bp);
+			$named: true;
+		} @else {
+			$bp: 0;
+			@warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
+		}
+	}
+	$bp: convert-to-em($bp);
+	@if $bp-max {
+		$bp-max: convert-to-em($bp-max) - (1/16);
+	}
+	@if $bp > 0em or $dir == 'only' or $dir == 'down' {
+		@if $dir == 'only' {
+			@if $named == true {
+				@if $bp > 0em {
+					$breakpoint: $breakpoint + '(min-width: #{$bp})';
+					@if $bp-max != null {
+						$breakpoint: $breakpoint + ' and ';
+					}
+				}
+				@if $bp-max != null {
+					$breakpoint: $breakpoint + '(max-width: #{$bp-max})';
+				}
+			} @else {
+				@warn 'breakpoint(): Only named media queries can have an `only` range.';
+			}
+		} @else if $dir == 'down' {
+			$max: if($named, $bp-max, $bp);
+			@if $named or $bp > 0em {
+				@if $max != null {
+					$breakpoint: $breakpoint + '(max-width: #{$max})';
+				}
+			}
+		} @else if $bp > 0em {
+			$breakpoint: $breakpoint + '(min-width: #{$bp})';
+		}
+	}
+	@return $breakpoint;
+}
+
+@mixin breakpoint($value) {
+	$breakPoint: get-breakpoint($value);
+	@if $breakPoint == '' {
+		@content;
+	} @else {
+		@media screen and (#{$breakPoint}) {
+			@content;
+		}
+	}
+}
