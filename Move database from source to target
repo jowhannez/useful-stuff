@@ -1,0 +1,6 @@
+@ source
+mysqldump -u $DBUsername -p$DBPassword $DBName > ~/$anything.sql
+
+@ target
+rsync -av johannes@cloud1.inett.no:~/$anything.sql ~/
+mysql -u $DBUsername -p$DBPassword $DBName < ~/$anything.sql
