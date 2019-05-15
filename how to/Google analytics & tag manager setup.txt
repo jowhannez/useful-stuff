@@ -8,6 +8,6 @@ Tag manager:
 
 1. tagmanager.google.com
 2. Add new tag -> Analytics
-3. Add variable with analytics ID
+3. Add variable with analytics ID (override)
 4. Publish variable
 NB: Remember to update hardcoded gtag id in the <script> tag!
