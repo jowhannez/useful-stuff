@@ -10,3 +10,4 @@ Tag manager:
 2. Add new tag -> Analytics
 3. Add variable with analytics ID
 4. Publish variable
+NB: Remember to update hardcoded gtag id in the <script> tag!
