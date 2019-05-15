@@ -1,0 +1,4 @@
+sudo systemctl restart nginx
+
+Check that everything is in order:
+sudo nginx -t
