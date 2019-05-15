@@ -1,11 +1,10 @@
 $breakpoints: (
-		small    : 0px,
-		iphone-7 : 375px,
-		ipad     : 768px,
-		ipad-pro : 1024px,
-		desktop  : 1280px,
-		laptop   : 1440px,
-		hd       : 1920px
+		phone      : 0px,
+		tablet     : 768px,
+		tablet-big : 1024px,
+		desktop    : 1280px,
+		4k         : 1440px,
+		hd         : 1920px
 ) !default;
 
 @function strip-unit($num) {

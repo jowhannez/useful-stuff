@@ -19,7 +19,7 @@
     /*
      Width classes &__item--{screen}-{columns}
      */
-    $screens: (small, ipad, desktop);
+    $screens: (phone, tablet, desktop);
     $columns-max: 12;
     $columns-min: 1;
     $columns-counter: $columns-max;
