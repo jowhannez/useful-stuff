@@ -1,0 +1,11 @@
+SYNTAX:
+rsync -av $source $target
+
+DRY RUN:
+rsync -avnh
+
+e.g.
+sudo rsync -av johannes@cloud5.inett.no:/var/www/conference.cloud5.tibe.no/web/assets/folder/ .
+
+@if target on cloudserver:
+chmod -R 777 webuser:webuser assets/folder
