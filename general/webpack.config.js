@@ -1,8 +1,9 @@
-const path                 = require('path');
-const glob                 = require('glob');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BrowserSyncPlugin    = require('browser-sync-webpack-plugin');
-const RemoveStylesJSFiles  = require('webpack-fix-style-only-entries');
+const path                 	 = require('path');
+const glob                 	 = require('glob');
+const MiniCssExtractPlugin 	 = require('mini-css-extract-plugin');
+const BrowserSyncPlugin    	 = require('browser-sync-webpack-plugin');
+const RemoveStylesJSFiles  	 = require('webpack-fix-style-only-entries');
+const TimestampWebpackPlugin = require('timestamp-webpack-plugin');
 
 function scanDir(pattern) {
 	let sources = {};
@@ -72,7 +73,7 @@ module.exports = (env, argv) => {
 								sourceMap: isDevMode,
 								plugins  : [
 									require('autoprefixer')({
-										browsers: browsers
+										overrideBrowserslist: browsers
 									})
 								]
 							}
@@ -132,6 +133,10 @@ module.exports = (env, argv) => {
 				socket  : {
 					domain: 'localhost:3000'
 				}
+			}),
+			new TimestampWebpackPlugin({
+				path: paths.dist,
+				filename: 'timestamp.json'
 			})
 		]
 	};
