@@ -1,11 +1,18 @@
+/**
+ * Mixins and functions for breakpoints. Any screen break point is a mobile first so {direction} by default is "top"
+ * ex: @include breakpoint({screen} {direction}){}
+ * ex: @include breakpoint(small){}
+ * ex: @include breakpoint(small top){}
+ * ex: @include breakpoint(medium down){}
+ */
+
 $breakpoints: (
-		phone      : 0px,
-		tablet     : 768px,
-		tablet-big : 1024px,
-		desktop    : 1280px,
-		4k         : 1440px,
-		hd         : 1920px
-) !default;
+	small: 0px,
+	medium: 640px,
+	large: 1024px,
+	xlarge: 1200px,
+	xxlarge: 1440px,
+);
 
 @function strip-unit($num) {
 	@return $num / ($num * 0 + 1);
@@ -135,7 +142,7 @@ $breakpoints: (
 	@if $breakPoint == '' {
 		@content;
 	} @else {
-		@media screen and (#{$breakPoint}) {
+		@media screen and #{$breakPoint} {
 			@content;
 		}
 	}
