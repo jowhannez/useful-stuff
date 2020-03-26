@@ -1,4 +1,8 @@
+Restart nginx:
 sudo systemctl restart nginx
 
 Check that everything is in order:
 sudo nginx -t
+
+Restart php:
+sudo systemctl restart php7.1-fpm
