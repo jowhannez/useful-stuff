@@ -5,6 +5,10 @@ $entry = new Entry([
     'title'     => $title,
     'enabled'   => true
 ]);
+
+/* Optional - edit existing entry fields */
+$entry->setFieldValue('tellusImages', $images);
+
 Craft::$app->getElements()->saveElement($entry);
 
 
