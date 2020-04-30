@@ -1,4 +1,4 @@
-/* Entry */
+/*** Entry ***/
 $entry = new Entry([
     'sectionId' => $section->id,
     'typeId'    => self::ENTRY_TYPE_ID,
@@ -12,14 +12,14 @@ $entry->setFieldValue('tellusImages', $images);
 Craft::$app->getElements()->saveElement($entry);
 
 
-/* Category */
+/*** Category ***/
 $category          = new Category();
 $category->title   = 'Category name';
 $category->groupId = 1;
 Craft::$app->getElements()->saveElement($category);
 
 
-/* External asset */
+/*** External asset ***/
 $picture  = file_get_contents($externalPicPath);
 $filename = 'name_of_file.jpg';
 $tempPath = '/tmp/' . $filename;
