@@ -13,9 +13,11 @@ Craft::$app->getElements()->saveElement($entry);
 
 
 /*** Category ***/
-$category          = new Category();
-$category->title   = 'Category name';
-$category->groupId = 1;
+$category          = new Category([
+    'title'   => 'Category name',
+    'groupId' => 1
+]);
+
 Craft::$app->getElements()->saveElement($category);
 
 
@@ -33,4 +35,5 @@ $asset = new Asset([
     'avoidFilenameConflicts' => true
 ]);
 $asset->setScenario(Asset::SCENARIO_CREATE);
+
 Craft::$app->getElements()->saveElement($asset);
