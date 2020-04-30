@@ -1,0 +1,32 @@
+/* Entry */
+$entry = new Entry([
+    'sectionId' => $section->id,
+    'typeId'    => self::ENTRY_TYPE_ID,
+    'title'     => $title,
+    'enabled'   => true
+]);
+Craft::$app->getElements()->saveElement($entry);
+
+
+/* Category */
+$category          = new Category();
+$category->title   = 'Category name';
+$category->groupId = 1;
+Craft::$app->getElements()->saveElement($category);
+
+
+/* External asset */
+$picture  = file_get_contents($externalPicPath);
+$filename = 'name_of_file.jpg';
+$tempPath = '/tmp/' . $filename;
+file_put_contents($tempPath, $picture);
+
+$asset = new Asset([
+    'tempFilePath'           => $tempPath,
+    'filename'               => $filename,
+    'newFolderId'            => $folder->id,
+    'volumeId'               => self::ASSET_VOLUME_ID,
+    'avoidFilenameConflicts' => true
+]);
+$asset->setScenario(Asset::SCENARIO_CREATE);
+Craft::$app->getElements()->saveElement($asset);
