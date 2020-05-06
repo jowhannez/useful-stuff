@@ -1,3 +1,3 @@
 grep -iRl --exclude-dir={node_modules,vendor} --include=\*.twig "Text to find" ./
  
-Looks recursively in the currently selected directory for "Text to find" in twig files exclusively and ignores directories node_modules and vendor. 
+Looks recursively in the current directory for "Text to find" in twig files exclusively while ignoring directories node_modules and vendor. 
