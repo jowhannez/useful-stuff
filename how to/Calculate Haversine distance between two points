@@ -1,0 +1,30 @@
+// The Haversine (or great circle) distance is the angular distance between two points on the surface of a sphere.
+
+const location    = {lat:  0, lng:  0};
+const destination = {lat: 10, lng: 10};
+
+_haversineDistance(location, destination) {
+        function toRad(x) {
+            return x * Math.PI / 180;
+        }
+        
+        const lat1 = location.lat;
+        const lon1 = location.lng;
+
+        const lat2 = destination.lat;
+        const lon2 = destination.lng;
+    
+        const radius = 6371; // Earth radius in kilometers
+        const x1     = lat2 - lat1;
+        const dLat   = toRad(x1);
+        const x2     = lon2 - lon1;
+        const dLon   = toRad(x2)
+        const a      = Math.sin(dLat / 2)    * Math.sin(dLat / 2) +
+                       Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                       Math.sin(dLon / 2)    * Math.sin(dLon / 2);
+        const c      = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const distance = radius * c;
+
+        return distance;
+}
