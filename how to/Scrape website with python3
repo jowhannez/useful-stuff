@@ -1,3 +1,5 @@
+// exports to empty "data.json" file in same directory
+
 import json
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
