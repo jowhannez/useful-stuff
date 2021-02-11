@@ -38,3 +38,15 @@ $asset = new Asset([
 $asset->setScenario(Asset::SCENARIO_CREATE);
 
 Craft::$app->getElements()->saveElement($asset);
+
+
+/*** Site ***/
+$site   = new Site([
+    'handle'   => 'some_handle',
+    'groupId'  => 1,
+    'name'     => 'Name of site',
+    'language' => 'nb',
+    'baseUrl'  => '@web/'
+]);
+
+Craft::$app->sites->saveSite($site);
