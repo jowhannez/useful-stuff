@@ -19,8 +19,8 @@ class ClassParser(HTMLParser):
             for a in attr[1].split(' '):
                 for c in classes:
                     for index in c:
-                        if index != a and index in a and a.replace(index, '&') not in c[index]:
-                            c[index].append(a.replace(index, '&'))
+                        if index != a and index in a and a.replace(index + '__', '&__') not in c[index]:
+                            c[index].append(a.replace(index + '__', '&__'))
 
 parser  = ClassParser()
 file    = input('File to parse: ')
