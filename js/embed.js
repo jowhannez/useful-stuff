@@ -25,18 +25,20 @@
 Module:
 
 export default {
-    _embed: null,
+    _embeds: null,
     init() {
-        this._embed = document.querySelector('[data-embed]');
-        if (!this._embed) {
+        this._embeds = document.querySelectorAll('[data-embed]');
+        console.log(this._embeds);
+        if (!this._embeds) {
             return;
         }
 
-        const url       = this._embed.getAttribute('data-embed');
-        const parsedUrl = this._createEmbedLink(url);
-
-        if (parsedUrl) {
-            this._embed.innerHTML = '<iframe class="embed__iframe" src="' + parsedUrl + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        for (const embed of this._embeds) {
+            const url       = embed.getAttribute('data-embed');
+            const parsedUrl = this._createEmbedLink(url);
+            if (parsedUrl) {
+                embed.innerHTML = '<iframe class="embed__iframe" src="' + parsedUrl + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            }
         }
     },
     _createEmbedLink(url) {
@@ -47,6 +49,8 @@ export default {
             return url.replace(youtubeRegex, 'https://www.youtube.com/embed/$1');
         } else if (url.match(vimeoRegex)) {
             return url.replace(vimeoRegex, 'https://player.vimeo.com/video/$5?autoplay=1&loop=1&autopause=0');
+        } else if (url.indexOf('embed') !== -1 || url.indexOf('nep') !== -1 || url.indexOf('live') !== -1 || url.indexOf('iframe') !== -1) {
+            return url;
         }
     
         return false;
